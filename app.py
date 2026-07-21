@@ -21,14 +21,14 @@ def index():
         </style>
     </head>
     <body>
-        <h1>🚀 Welcome to the Real-World DevOps App!</h1>
-        <h2> Warmest of welcomes from our side </h2>
-        <p>This page has been visited:</p>
-        <div class="counter">{visits} times</div>
-        <p><i>Powered by Python, Docker, and GitHub Actions.</i></p>
-    </body>
-    </html>
-    '''
- 
-if name == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+                <h1>🚀 Welcome to the Real-World DevOps App!</h1>
+        <h2>Warmest of welcomes from our side</h2>
+        <p>This page has been visited:</p>
+        <div class="counter">{visits} times</div>
+        <p><i>Powered by Python, Docker, and GitHub Actions.</i></p>
+    </body>
+    </html>
+    '''
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
