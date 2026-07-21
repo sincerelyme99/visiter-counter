@@ -1,0 +1,40 @@
+name: Real-World App CI/CD
+ 
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+ 
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+ 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+ 
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+ 
+      - name: Lint Python Code (Flake8)
+        run: |
+          pip install flake8
+          flake8 app.py --count --select=E9,F63,F7,F82 --show-source --statistics
+ 
+      - name: Validate Docker Compose YAML
+        run: |
+          pip install pyyaml
+          python -c "import yaml; yaml.safe_load(open('docker-compose.yml'))"
+          echo "✅ docker-compose.yml is valid!"
+ 
+      - name: Build Docker Images
+        run: docker compose build
+ 
+      - name: Success Message
+        run: echo "🎉 CI Pipeline Passed! App is ready for deployment."
