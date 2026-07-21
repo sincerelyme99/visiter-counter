@@ -29,3 +29,4 @@ jobs:
         run: docker compose build
       - name: Success Message
         run: echo "🎉 CI Pipeline Passed! App is ready for deployment."
+ 
